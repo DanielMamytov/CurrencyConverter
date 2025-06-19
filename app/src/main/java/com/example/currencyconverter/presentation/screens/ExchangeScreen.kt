@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.currencyconverter.presentation.viewmodel.ExchangeViewModel
 
@@ -20,7 +21,8 @@ fun ExchangeScreen(
     viewModel: ExchangeViewModel = hiltViewModel()
 ) {
     var amount by remember { mutableStateOf(1.0) }
-    val rate = viewModel.rates.value.firstOrNull { it.currency != code }
+    val rates by viewModel.rates.collectAsState()
+    val rate = rates.firstOrNull { it.currency != code }
     LaunchedEffect(code, amount) { viewModel.loadRates(code, amount) }
     Column {
         Text("Base: $code")
@@ -30,7 +32,7 @@ fun ExchangeScreen(
         }
         Button(onClick = {
             rate?.let {
-                viewModel.exchange(code, it.currency, amount.value, it.value)
+                viewModel.exchange(code, it.currency, amount, it.value)
                 onDone()
             }
         }) { Text("Buy") }

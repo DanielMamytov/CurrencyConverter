@@ -11,17 +11,20 @@ import com.example.currencyconverter.presentation.viewmodel.TransactionsViewMode
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @Composable
 fun TransactionsScreen(
     onBack: () -> Unit,
     viewModel: TransactionsViewModel = hiltViewModel()
 ) {
+    val transactions by viewModel.transactions.collectAsState()
     LazyColumn {
         item {
             IconButton(onClick = onBack) { Icon(Icons.Default.ArrowBack, contentDescription = null) }
         }
-        items(viewModel.transactions.value) { tr ->
+        items(transactions) { tr ->
             ListItem(
                 headlineContent = { Text("${tr.from} -> ${tr.to}") },
                 supportingContent = { Text("${tr.fromAmount} to ${tr.toAmount}") }

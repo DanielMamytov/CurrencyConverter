@@ -13,6 +13,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.currencyconverter.presentation.viewmodel.CurrenciesViewModel
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @Composable
 fun CurrenciesScreen(
@@ -20,12 +22,13 @@ fun CurrenciesScreen(
     onTransactions: () -> Unit,
     viewModel: CurrenciesViewModel = hiltViewModel()
 ) {
+    val accounts by viewModel.accounts.collectAsState()
     Column {
         IconButton(onClick = onTransactions) {
             Icon(Icons.Default.List, contentDescription = null)
         }
         LazyColumn {
-            items(viewModel.accounts.value) { account ->
+            items(accounts) { account ->
                 ListItem(
                     headlineContent = { Text(account.code) },
                     supportingContent = { Text(account.amount.toString()) },
