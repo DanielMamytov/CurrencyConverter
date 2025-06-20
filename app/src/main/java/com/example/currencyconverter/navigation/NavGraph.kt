@@ -27,10 +27,10 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable("${Destinations.EXCHANGE}/{code}") { backStack ->
             val code = backStack.arguments?.getString("code") ?: "USD"
-            ExchangeScreen(code) { navController.popBackStack() }
+            ExchangeScreen(code) { navController.popBackStack(); Unit }
         }
         composable(Destinations.TRANSACTIONS) {
-            TransactionsScreen { navController.popBackStack() }
+            TransactionsScreen { navController.popBackStack(); Unit }
         }
     }
 }
