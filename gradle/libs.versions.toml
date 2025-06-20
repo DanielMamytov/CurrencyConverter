@@ -6,6 +6,8 @@ junit = "4.14-SNAPSHOT"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.9.0"
+hiltNavigationCompose = "1.2.0"
+lifecycleViewModelCompose = "2.9.0"
 activityCompose = "1.10.1"
 composeBom = "2024.04.01"
 retrofit = "2.11.0"
@@ -18,7 +20,6 @@ coilVersion = "1.4.0"
 recyclerviewVersion = "1.2.1"
 navigationUiKtx = "2.8.7"
 kotlinxCoroutines = "1.9.0"
-hiltNavigationCompose = "1.2.0"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
@@ -57,6 +58,7 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewModelCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
